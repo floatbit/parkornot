@@ -1,0 +1,16 @@
+{
+    "/dist/app.js": "/dist/app.js",
+    "/dist/blocks/text.js": "/dist/blocks/text.js",
+    "/dist/app.css": "/dist/app.css",
+    "/dist/images/food.png": "/dist/images/food.png",
+    "/dist/images/photo.jpg": "/dist/images/photo.jpg",
+    "/dist/images/photo.png": "/dist/images/photo.png",
+    "/dist/images/sample-image.jpg": "/dist/images/sample-image.jpg",
+    "/dist/fonts/inter/Inter-Bold.woff": "/dist/fonts/inter/Inter-Bold.woff",
+    "/dist/fonts/inter/Inter-Bold.woff2": "/dist/fonts/inter/Inter-Bold.woff2",
+    "/dist/fonts/inter/Inter-Medium.woff": "/dist/fonts/inter/Inter-Medium.woff",
+    "/dist/fonts/inter/Inter-Medium.woff2": "/dist/fonts/inter/Inter-Medium.woff2",
+    "/dist/fonts/inter/Inter-Regular.woff": "/dist/fonts/inter/Inter-Regular.woff",
+    "/dist/fonts/inter/Inter-Regular.woff2": "/dist/fonts/inter/Inter-Regular.woff2",
+    "/dist/images/sign.png": "/dist/images/sign.png"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/process",
+  "title": "Process",
+  "description": "",
+  "category": "parkornot",
+  "keywords": ["process"],
+  "_viewScript": ["blocks/process"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "block.php"
+  }
+}

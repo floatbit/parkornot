@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/camera",
+  "title": "Camera",
+  "description": "",
+  "category": "parkornot",
+  "keywords": ["camera"],
+  "_viewScript": ["blocks/camera"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "block.php"
+  }
+}
