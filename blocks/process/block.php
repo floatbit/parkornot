@@ -85,10 +85,14 @@ if (isset($_POST['image'])) {
     update_field('field_66ecddbf8f43a', $time, $post_id);
     update_field('field_66ecddac8f438', $day, $post_id);
 
+    // format items
+    $formatted_time = date('g:ia', strtotime($time));
+    $formatted_date = date('F j, Y', strtotime($date));
+
     // do api response
     // Updated prompt to incorporate all suggestions
-    $prompt = "It's $day, $date, $time. Look at this image carefully then answer this question: can I park here right now? The first word of your answer should be Yes, No, Maybe in uppercase letters, and if payment is needed. Followed by the explanation. Your tone should be a smartass. Do your best to keep it under 3 sentences.";
-  
+    $prompt = "It's $day, $date, $formatted_time . There may be more than one sign in the image, so examine each one carefully. Combine the conditions from all signs and answer this: can I park here right now? Consider the exact current time when deciding if a parking restriction applies. Start with YES, NO, or MAYBE in uppercase, and include whether payment is required. In a smartass tone, explain why in 3 sentences or less.";
+
       // Create the JSON payload
       $data = [
           "model" => "gpt-4o",
@@ -104,6 +108,7 @@ if (isset($_POST['image'])) {
                           "type" => "image_url",
                           "image_url" => [
                               "url" => wp_get_attachment_image_url($attachment_id, 'full')
+                              //"url" => "https://parkornot.com/wp-content/uploads/2024/09/66ed7e7b4bf25_resized.png"
                           ]
                       ]
                   ]
