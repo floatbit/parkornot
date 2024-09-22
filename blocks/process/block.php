@@ -19,9 +19,12 @@ if (isset($_POST['image'])) {
 
     // Save the image in the media library
     $upload_dir = wp_upload_dir();
-    $image_name = $unique_id . '.png';
+    $image_name = $unique_id . '.jpg';
     $image_path = $upload_dir['path'] . '/' . $image_name;
-    file_put_contents($image_path, $imageContent);
+
+    // Create an image resource from the decoded content
+    $src = imagecreatefromstring($imageContent);
+    imagejpeg($src, $image_path, 80); // Save as JPG with quality 80
 
     // Resize the image
     function resizeImage($file, $maxWidth, $maxHeight) {
@@ -39,7 +42,7 @@ if (isset($_POST['image'])) {
             $height = $maxHeight;
         }
 
-        $src = imagecreatefrompng($file); // Assuming PNG as the format
+        $src = imagecreatefromjpeg($file); // Assuming JPG as the format
         $dst = imagecreatetruecolor($width, $height);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $origWidth, $origHeight);
 
@@ -50,14 +53,14 @@ if (isset($_POST['image'])) {
     $resizedImage = resizeImage($image_path, 800, 600); // Resize to fit within 800x600
 
     // Save the resized image to a new file
-    $resizedImageName = $unique_id . '_resized.png';
+    $resizedImageName = $unique_id . '_resized.jpg';
     $resizedImagePath = $upload_dir['path'] . '/' . $resizedImageName;
-    imagepng($resizedImage, $resizedImagePath, 8); // 0-9 quality for PNG, 0 is no compression
+    imagejpeg($resizedImage, $resizedImagePath, 80); // 0-100 quality for JPG, 80 is a good balance
 
     // Add the resized image to the media library
     $attachment = [
         'guid' => $upload_dir['url'] . '/' . $resizedImageName,
-        'post_mime_type' => 'image/png',
+        'post_mime_type' => 'image/jpeg',
         'post_title' => sanitize_file_name($resizedImageName),
         'post_content' => '',
         'post_status' => 'inherit'
